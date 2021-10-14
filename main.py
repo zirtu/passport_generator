@@ -1,18 +1,22 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+import os,sys,shutil
+import time
+import hashlib
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+day = time.strftime("%d", time.localtime())
+print(day)
+sourse_path = "test/index.html"
 
 
+md = hashlib.md5()
+md.update(day.encode('utf-8'))
+print(md.hexdigest())
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+md5Path = md.hexdigest()+str(day)
+print(md5Path)
+
+os.mkdir(md5Path)
+d_path = md5Path+"/"
+shutil.copy(sourse_path,d_path)
+
+
